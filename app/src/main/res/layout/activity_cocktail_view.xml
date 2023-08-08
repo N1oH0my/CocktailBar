@@ -7,7 +7,7 @@
     tools:context=".View.cocktail_view_activity">
 
     <ImageView
-        android:id="@+id/id_title_item_img"
+        android:id="@+id/id_new_item_img"
         android:layout_width="360dp"
         android:layout_height="329dp"
         android:contentDescription="@string/app_name"
@@ -28,7 +28,7 @@
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/id_title_item_img"
+        app:layout_constraintTop_toBottomOf="@+id/id_new_item_img"
         app:layout_constraintVertical_bias="0.0">
 
 
@@ -87,7 +87,7 @@
             android:layout_gravity="center">
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/id_edit_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/edit_frame_btn" />

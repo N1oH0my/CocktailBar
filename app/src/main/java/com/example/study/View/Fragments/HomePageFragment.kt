@@ -46,18 +46,6 @@ class HomePageFragment : Fragment() {
     }
     private fun Init() = with(_binding)
     {
-        /*this?.idTitleItemImg?.setOnClickListener {
-            val rootView = view.findViewById<ViewGroup>(R.id.id_scroll_view)
-
-            // Удаление всех дочерних элементов из корневого представления
-            rootView.removeAllViews()
-            val fragmentManager = requireActivity().supportFragmentManager
-            val fragmentTransaction = fragmentManager.beginTransaction()
-            val fragment = CocktailsListFragment()
-            fragmentTransaction.replace(R.id.id_scroll_view, fragment)
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
-        }*/
 
         this?.idAddBtn?.setOnClickListener {
             val intent = Intent(requireContext(), save_cocktail_view::class.java)

@@ -44,13 +44,15 @@ class CocktailsListFragment : Fragment() {
 
 
         adapter.onItemClickListener = object : CocktailListAdapter.OnItemClickListener {
-            override fun onItemClick(item: Cocktail) {
+            override fun onItemClick(item: Cocktail, position: Int) {
                 // Здесь открывайте новую активность (или фрагмент) с информацией о выбранном элементе
                 val intent = Intent(requireContext(), cocktail_view_activity::class.java)
                 intent.putExtra("title", item._title)
                 intent.putExtra("description", item._description)
                 intent.putExtra("recipe", item._recipe)
                 intent.putExtra("image", item._img)
+
+                intent.putExtra("position", position)
                 startActivity(intent)
             }
         }

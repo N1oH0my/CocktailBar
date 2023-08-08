@@ -14,7 +14,7 @@ import com.example.study.R
 class CocktailListAdapter(var context: Context, private val cocktailList: List<Cocktail>) : RecyclerView.Adapter<CocktailListAdapter.CocktailViewHolder>() {
 
     interface OnItemClickListener {
-        fun onItemClick(item: Cocktail)
+        fun onItemClick(item: Cocktail, position: Int)
     }
     var onItemClickListener: OnItemClickListener? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CocktailViewHolder {
@@ -41,7 +41,8 @@ class CocktailListAdapter(var context: Context, private val cocktailList: List<C
         }
 
         val item = cocktailList[position]
-        onItemClickListener?.let { holder.bind(item, it) }
+        onItemClickListener?.let { holder.bind(item, it, position) }
+
     }
 
     override fun getItemCount() = cocktailList.size
@@ -49,9 +50,9 @@ class CocktailListAdapter(var context: Context, private val cocktailList: List<C
     inner class CocktailViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val titleTextView: TextView = itemView.findViewById(R.id.id_recycler_item_title)
         val imageView: ImageView = itemView.findViewById(R.id.id_recycler_item_img)
-        fun bind(item: Cocktail, clickListener: OnItemClickListener) {
+        fun bind(item: Cocktail, clickListener: OnItemClickListener, position: Int) {
             // Привязка данных к элементу списка
-            itemView.setOnClickListener { clickListener.onItemClick(item) }
+            itemView.setOnClickListener { clickListener.onItemClick(item, position) }
         }
     }
 

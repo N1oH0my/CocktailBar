@@ -2,8 +2,10 @@ package com.example.study.View
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.AttributeSet
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
@@ -20,24 +22,104 @@ class save_cocktail_view : AppCompatActivity() {
     private val cur_data: MainViewModel by lazy {
         ViewModelProvider(this)[MainViewModel::class.java]
     }
+    private var PICK_IMAGE_REQUEST = 1
+    private var cocktail = Cocktail(" ", " ", " ", null)
+    var position: Int = -1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_save_cocktail_view)
         binding = ActivitySaveCocktailViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        Init()
+        val is_edit = intent.getStringExtra("edit")
+        if (is_edit == "true") {
+            InitEdit()
+        }
+        else{
+            InitAdd()
+        }
+
+
     }
 
-    private fun Init() = with(binding)
+    private fun InitEdit() = with(binding)
     {
-        val imageView = binding.idTitleItemImg
+        position = intent.getIntExtra("position", -1)
+        val title = intent.getStringExtra("title")
+        val description = intent.getStringExtra("description")
+        val recipe = intent.getStringExtra("recipe")
+
+        idEditTitle.setText(title)
+        idEditDescription.setText(description)
+        idEditRecipe.setText(recipe)
+
+
+
+        idCancelBtn.setOnClickListener {
+            onBackPressed()
+        }
+
+        if (position != -1)
+        {
+            idSaveBtn.setOnClickListener {
+                updateCocktailList()
+                onBackPressed()
+            }
+            val imageView = binding.idNewItemImg
+            val img = cur_data.live_data_cocktails.value?.get(position)?._img
+            if (img != null) {
+                Glide.with(binding.root)
+                    .load(img)
+                    .into(imageView)
+                cocktail._img = img
+            } else {
+                Glide.with(binding.root)
+                    .load(R.drawable.place_holder)
+                    .into(imageView)
+            }
+        }
+        else{
+            idSaveBtn.setOnClickListener {
+                generateCocktailList()
+                onBackPressed()
+            }
+            val imageView = binding.idNewItemImg
+            val imageUri: Uri? = intent.getParcelableExtra<Uri>("image")
+            if (imageUri != null) {
+                Glide.with(binding.root)
+                    .load(imageUri)
+                    .into(imageView)
+            } else {
+                Glide.with(binding.root)
+                    .load(R.drawable.place_holder)
+                    .into(imageView)
+            }
+
+        }
+
+        idNewItemImg.setOnClickListener {
+            val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+            startActivityForResult(intent, PICK_IMAGE_REQUEST)
+        }
+    }
+    private fun InitAdd() = with(binding)
+    {
+        val imageView = binding.idNewItemImg
         Glide.with(binding.root)
             .load(R.drawable.place_holder)
             .into(imageView)
 
+        idCancelBtn.setOnClickListener {
+            onBackPressed()
+        }
         idSaveBtn.setOnClickListener {
             generateCocktailList()
+            onBackPressed()
+        }
+
+        idNewItemImg.setOnClickListener {
+            val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+            startActivityForResult(intent, PICK_IMAGE_REQUEST)
         }
     }
     private fun generateCocktailList()= with(binding) {
@@ -46,7 +128,12 @@ class save_cocktail_view : AppCompatActivity() {
         val description = idEditDescription.text.toString()
         val recipe = idEditRecipe.text.toString()
 
-        val cocktail = Cocktail(title, description, recipe, null)
+        cocktail._title = title
+        cocktail._description = description
+        cocktail._recipe = recipe
+
+
+
         val new_cocktail_list = mutableListOf<Cocktail>()
         new_cocktail_list.add(cocktail)
 
@@ -56,6 +143,47 @@ class save_cocktail_view : AppCompatActivity() {
             new_cocktail_list.addAll(cur_list)
         }
         cur_data.live_data_cocktails.value = new_cocktail_list
+
+        /*val intent = Intent(applicationContext, MainActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+        finish()*/
+        /*
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.id_page, HomePageFragment.newInstance())
+            .commit()*/
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null) {
+            val selectedImage: Uri? = data.data
+            cocktail._img = selectedImage//.toString()
+            val imageView = binding.idNewItemImg
+            Glide.with(binding.root)
+                .load(selectedImage)
+                .into(imageView)
+        }
+    }
+
+    private fun updateCocktailList()= with(binding) {
+
+        val title = idEditTitle.text.toString()
+        val description = idEditDescription.text.toString()
+        val recipe = idEditRecipe.text.toString()
+
+        cocktail._title = title
+        cocktail._description = description
+        cocktail._recipe = recipe
+
+
+
+        val new_list = cur_data.live_data_cocktails.value
+        if (new_list != null && new_list.size != 0)
+        {
+            new_list[position] = cocktail
+        }
+        cur_data.live_data_cocktails.value = new_list
 
         /*val intent = Intent(applicationContext, MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
