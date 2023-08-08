@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.study.R
 import com.example.study.databinding.FragmentHomePageBinding
+import com.example.study.save_cocktail_view
 
 
 class HomePageFragment : Fragment() {
@@ -16,7 +17,7 @@ class HomePageFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentHomePageBinding.inflate(inflater, container, false)
 
         /*_binding!!.idTitleItemImg.setOnClickListener {
@@ -29,9 +30,9 @@ class HomePageFragment : Fragment() {
         return _binding!!.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?): Unit =with(_binding) {
         super.onViewCreated(view, savedInstanceState)
-        _binding!!.idTitleItemImg.setOnClickListener {
+        this?.idTitleItemImg?.setOnClickListener {
             val rootView = view.findViewById<ViewGroup>(R.id.id_scroll_view)
 
             // Удаление всех дочерних элементов из корневого представления
@@ -44,6 +45,10 @@ class HomePageFragment : Fragment() {
             fragmentTransaction.commit()
         }
 
+        this?.idAddBtn?.setOnClickListener {
+            val intent = Intent(requireContext(), save_cocktail_view::class.java)
+            startActivity(intent)
+        }
     }
     companion object {
         @JvmStatic

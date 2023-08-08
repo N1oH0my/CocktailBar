@@ -13,9 +13,14 @@ import com.example.study.R
 
 class CocktailListAdapter(var context: Context, private val cocktailList: List<Cocktail>) : RecyclerView.Adapter<CocktailListAdapter.CocktailViewHolder>() {
 
+    interface OnItemClickListener {
+        fun onItemClick(item: Cocktail)
+    }
+    var onItemClickListener: OnItemClickListener? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CocktailViewHolder {
         val itemView = LayoutInflater.from(context).inflate(R.layout.fragment_cocktail_item, parent, false)
         return CocktailViewHolder(itemView)
+
     }
 
     override fun onBindViewHolder(holder: CocktailViewHolder, position: Int) {
@@ -35,6 +40,8 @@ class CocktailListAdapter(var context: Context, private val cocktailList: List<C
                 .into(holder.imageView)
         }
 
+        val item = cocktailList[position]
+        onItemClickListener?.let { holder.bind(item, it) }
     }
 
     override fun getItemCount() = cocktailList.size
@@ -42,6 +49,10 @@ class CocktailListAdapter(var context: Context, private val cocktailList: List<C
     inner class CocktailViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val titleTextView: TextView = itemView.findViewById(R.id.id_recycler_item_title)
         val imageView: ImageView = itemView.findViewById(R.id.id_recycler_item_img)
+        fun bind(item: Cocktail, clickListener: OnItemClickListener) {
+            // Привязка данных к элементу списка
+            itemView.setOnClickListener { clickListener.onItemClick(item) }
+        }
     }
 
 }
