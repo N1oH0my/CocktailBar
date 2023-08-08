@@ -1,5 +1,6 @@
 package com.example.study.View.Fragments
 
+import SavedData
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -22,6 +23,7 @@ class CocktailsListFragment : Fragment() {
     private val cur_data: MainViewModel by lazy {
         ViewModelProvider(this)[MainViewModel::class.java]
     }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

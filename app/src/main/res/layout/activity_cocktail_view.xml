@@ -7,7 +7,7 @@
     tools:context=".View.cocktail_view_activity">
 
     <ImageView
-        android:id="@+id/id_new_item_img"
+        android:id="@+id/id_item_img"
         android:layout_width="360dp"
         android:layout_height="329dp"
         android:contentDescription="@string/app_name"

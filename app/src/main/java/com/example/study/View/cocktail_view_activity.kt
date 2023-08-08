@@ -6,16 +6,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.example.study.Models.Cocktail
 import com.example.study.R
 import com.example.study.databinding.ActivityCocktailViewBinding
 import com.example.weatherapp.ViewModels.MainViewModel
-import java.text.FieldPosition
 
 
 class cocktail_view_activity : AppCompatActivity() {
     private lateinit var binding: ActivityCocktailViewBinding
-    private lateinit var cocktail:Cocktail
     private val cur_data: MainViewModel by lazy {
         ViewModelProvider(this)[MainViewModel::class.java]
     }
@@ -43,7 +40,7 @@ class cocktail_view_activity : AppCompatActivity() {
         var img:Uri? = null
         if(position != -1)
         {
-            val imageView = binding.idNewItemImg
+            val imageView = binding.idItemImg
             val _img = cur_data.live_data_cocktails.value?.get(position)?._img
             if (_img != null) {
                 Glide.with(binding.root)
@@ -57,7 +54,7 @@ class cocktail_view_activity : AppCompatActivity() {
         }
         else
         {
-            val imageView = binding.idNewItemImg
+            val imageView = binding.idItemImg
             img = intent.getParcelableExtra<Uri>("image")
             if (img!= null) {
                 Glide.with(binding.root)

@@ -1,5 +1,6 @@
 package com.example.study.View.Fragments
 
+import SavedData
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -30,6 +31,7 @@ class HomePageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?): Unit =with(_binding) {
         super.onViewCreated(view, savedInstanceState)
 
+
         Init()
         Launch()
         Update()
@@ -47,6 +49,7 @@ class HomePageFragment : Fragment() {
     private fun Init() = with(_binding)
     {
 
+
         this?.idAddBtn?.setOnClickListener {
             val intent = Intent(requireContext(), save_cocktail_view::class.java)
             startActivity(intent)
@@ -55,6 +58,7 @@ class HomePageFragment : Fragment() {
 
     private fun Launch()
     {
+
         val list = cur_data.live_data_cocktails.value
         if (list != null && list.size != 0)
         {
