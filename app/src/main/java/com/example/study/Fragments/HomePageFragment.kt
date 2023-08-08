@@ -39,7 +39,7 @@ class HomePageFragment : Fragment() {
             val fragmentManager = requireActivity().supportFragmentManager
             val fragmentTransaction = fragmentManager.beginTransaction()
             val fragment = CocktailsListFragment()
-            fragmentTransaction.replace(R.id.id_home_page, fragment)
+            fragmentTransaction.replace(R.id.id_scroll_view, fragment)
             fragmentTransaction.addToBackStack(null)
             fragmentTransaction.commit()
         }
