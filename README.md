@@ -36,7 +36,18 @@
 <p>Для сохранения данных была попытка написать класс с SharedPreferences, но не удалось, пыталась сохранить MutableList, а ещё в виде JSON, но приложение всегда зависало при сохранении.</p>
 
 <p>Также была попытка исправить RecyclerView, чтобы не было таких отступов, но не было найдено решения для этой ситуации.</p>
-
+<img src="https://github.com/N1oH0my/CocktailBar/blob/master/img/Screenshot_2023-08-08-22-29-37-671_com.example.study.jpg" alt="Alt текст">
+<img src="https://github.com/N1oH0my/CocktailBar/blob/master/img/Screenshot_2023-08-08-22-29-45-946_com.example.study.jpg" alt="Alt текст">
+<img src="https://github.com/N1oH0my/CocktailBar/blob/master/img/Screenshot_2023-08-08-22-29-48-189_com.example.study.jpg" alt="Alt текст">
+<img src="https://github.com/N1oH0my/CocktailBar/blob/master/img/Screenshot_2023-08-08-22-33-41-338_com.example.study.jpg" alt="Alt текст">
+<img src="https://github.com/N1oH0my/CocktailBar/blob/master/img/Screenshot_2023-08-08-22-33-44-995_com.example.study.jpg" alt="Alt текст">
+<img src="https://github.com/N1oH0my/CocktailBar/blob/master/img/Screenshot_2023-08-08-22-33-49-785_com.example.study.jpg" alt="Alt текст">
+<img src="https://github.com/N1oH0my/CocktailBar/blob/master/img/Screenshot_2023-08-08-22-33-52-737_com.example.study.jpg" alt="Alt текст">
+<img src="https://github.com/N1oH0my/CocktailBar/blob/master/img/Screenshot_2023-08-08-22-33-54-820_com.example.study.jpg" alt="Alt текст">
+<img src="https://github.com/N1oH0my/CocktailBar/blob/master/img/Screenshot_2023-08-08-22-34-18-075_com.example.study.jpg" alt="Alt текст">
+<img src="https://github.com/N1oH0my/CocktailBar/blob/master/img/Screenshot_2023-08-08-22-34-20-407_com.example.study.jpg" alt="Alt текст">
+<img src="https://github.com/N1oH0my/CocktailBar/blob/master/img/Screenshot_2023-08-08-22-34-41-084_com.example.study.jpg" alt="Alt текст">
+<img src="https://github.com/N1oH0my/CocktailBar/blob/master/img/Screenshot_2023-08-08-22-34-43-539_com.example.study.jpg" alt="Alt текст">
 </body>
 </html>
-![Alt текст](https://github.com/N1oH0my/CocktailBar/blob/master/img/Screenshot_2023-08-08-22-29-37-671_com.example.study.jpg)
+
