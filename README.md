@@ -4,10 +4,10 @@
 #Использованные библиотеки
 #В проекте использовались следующие библиотеки:
 
-- [Glide](https://github.com/bumptech/glide) (`implementation 'com.github.bumptech.glide:glide:4.12.0'`) - библиотека для загрузки и отображения изображений.
-- [Lifecycle ViewModel](https://developer.android.com/jetpack/androidx/releases/lifecycle) (`implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'`) - библиотека для управления данными, связанными с пользовательским интерфейсом.
-- [Activity](https://developer.android.com/jetpack/androidx/releases/activity) (`implementation 'androidx.activity:activity-ktx:1.7.2'`) - библиотека для упрощения работы с активностями в AndroidX.
-- также используется binding для упрощения работы с xml
+#-[Glide](https://github.com/bumptech/glide) (`implementation 'com.github.bumptech.glide:glide:4.12.0'`) - библиотека для загрузки и отображения изображений.
+#- [Lifecycle ViewModel](https://developer.android.com/jetpack/androidx/releases/lifecycle) (`implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'`) - библиотека для управления данными, связанными с пользовательским интерфейсом.
+#- [Activity](https://developer.android.com/jetpack/androidx/releases/activity) (`implementation 'androidx.activity:activity-ktx:1.7.2'`) - библиотека для упрощения работы с активностями в AndroidX.
+#- также используется binding для упрощения работы с xml
 #сначала создаётся MainActivity и запускает HomePageFragment, загружается начальный экран без коктейлей
 #При добавлении часть фрагмента заменяется другим для отображения списка добавленных коктейлей
 #При нажатии на кнопку добавить открывается активити save_cocktail_view
