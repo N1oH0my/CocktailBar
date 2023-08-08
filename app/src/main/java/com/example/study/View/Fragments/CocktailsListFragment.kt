@@ -1,4 +1,4 @@
-package com.example.study.Fragments
+package com.example.study.View.Fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,18 +6,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RelativeLayout
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.study.Adapters.CocktailListAdapter
 import com.example.study.Models.Cocktail
 import com.example.study.R
-import com.example.study.cocktail_view_activity
+import com.example.study.View.cocktail_view_activity
 import com.example.study.databinding.FragmentCocktailsListBinding
+import com.example.weatherapp.ViewModels.MainViewModel
 
 
 class CocktailsListFragment : Fragment() {
     private lateinit var binding: FragmentCocktailsListBinding
+    private val cur_data: MainViewModel by lazy {
+        ViewModelProvider(this)[MainViewModel::class.java]
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -55,14 +59,20 @@ class CocktailsListFragment : Fragment() {
 
     // Метод для получения списка товаров
     private fun getDummyProductList(): List<Cocktail> {
-        // Здесь вы можете получить списо�� товаров из вашего источника данных
+        // Здесь вы можете получить список товаров из вашего источника данных
         // В данном примере мы создаем фиктивный список товаров
-        val productList = mutableListOf<Cocktail>()
-
+        val cur_cocktail_list = cur_data.live_data_cocktails.value//mutableListOf<Cocktail>()
+        var cocktail_list = mutableListOf<Cocktail>()
+        if (cur_cocktail_list != null)
+        {
+            cocktail_list.addAll(cur_cocktail_list)
+        }
+        return cocktail_list
+        /*
         productList.add(Cocktail("first", "Description ", "Recipe", null))
         productList.add(Cocktail("second", "Description ", "Recipe", null))
         productList.add(Cocktail("third", "Description ", "Recipe", null))
+        */
 
-        return productList
     }
 }

@@ -1,12 +1,11 @@
-package com.example.study
+package com.example.study.View
 
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
-import com.example.study.Models.Cocktail
+import com.example.study.R
 import com.example.study.databinding.ActivityCocktailViewBinding
-import com.example.study.databinding.FragmentCocktailsListBinding
 
 class cocktail_view_activity : AppCompatActivity() {
     private lateinit var binding: ActivityCocktailViewBinding
