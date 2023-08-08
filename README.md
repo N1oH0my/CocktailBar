@@ -39,4 +39,4 @@
 
 </body>
 </html>
-![Alt текст](./img/Screenshot_2023-08-08-22-29-37-671_com.example.study.jpg)
+![Alt текст](https://github.com/N1oH0my/CocktailBar/blob/master/img/Screenshot_2023-08-08-22-29-37-671_com.example.study.jpg)
