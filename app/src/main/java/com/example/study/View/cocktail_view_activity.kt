@@ -2,11 +2,13 @@ package com.example.study.View
 
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.example.study.MainActivity
 import com.example.study.R
+import com.example.study.View.Fragments.CocktailsListFragment
 import com.example.study.databinding.ActivityCocktailViewBinding
 import com.example.weatherapp.ViewModels.MainViewModel
 
@@ -20,12 +22,18 @@ class cocktail_view_activity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_cocktail_view)
         binding = ActivityCocktailViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         Init()
     }
+    /*override fun onResume() {
+
+        super.onResume()
+        binding = ActivityCocktailViewBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        Init()
+    }*/
     private fun Init() = with(binding) {
         val title = intent.getStringExtra("title")
         val description = intent.getStringExtra("description")
@@ -37,44 +45,28 @@ class cocktail_view_activity : AppCompatActivity() {
         binding.idDesccriptionText.text = description
         binding.idRecipeText.text = recipe
 
-        var img:Uri? = null
-        if(position != -1)
-        {
-            val imageView = binding.idItemImg
-            val _img = cur_data.live_data_cocktails.value?.get(position)?._img
-            if (_img != null) {
-                Glide.with(binding.root)
-                    .load(_img)
-                    .into(imageView)
-            } else {
-                Glide.with(binding.root)
-                    .load(R.drawable.place_holder)
-                    .into(imageView)
-            }
+
+        var imgUri: Uri? = null
+        val imageView = binding.idItemImg
+        imgUri = intent.getParcelableExtra<Uri>("image")
+        if (imgUri!= null) {
+            Glide.with(binding.root)
+                .load(imgUri)
+                .into(imageView)
         }
         else
         {
-            val imageView = binding.idItemImg
-            img = intent.getParcelableExtra<Uri>("image")
-            if (img!= null) {
-                Glide.with(binding.root)
-                    .load(img)
-                    .into(imageView)
-            } else {
-                Glide.with(binding.root)
-                    .load(R.drawable.place_holder)
-                    .into(imageView)
-            }
+            Glide.with(binding.root)
+                .load(R.drawable.place_holder)
+                .into(imageView)
         }
-
-
 
         idEditBtn.setOnClickListener {
             val intent = Intent(this@cocktail_view_activity, save_cocktail_view::class.java)
             intent.putExtra("title", title)
             intent.putExtra("description", description)
             intent.putExtra("recipe", recipe)
-            intent.putExtra("image", img)
+            intent.putExtra("image", imgUri)
 
 
             intent.putExtra("edit", "true")
@@ -83,5 +75,12 @@ class cocktail_view_activity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+    override fun onBackPressed() {
+        val intent = Intent(this@cocktail_view_activity, MainActivity::class.java)
+        startActivity(intent)
+
+    }
+
+
 
 }

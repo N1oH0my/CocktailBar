@@ -59,43 +59,36 @@ class save_cocktail_view : AppCompatActivity() {
             onBackPressed()
         }
 
+
+        val imageView = binding.idNewItemImg
+        var imageUri: Uri? = null
         if (position != -1)
         {
             idSaveBtn.setOnClickListener {
                 updateCocktailList()
-                onBackPressed()
-            }
-            val imageView = binding.idNewItemImg
-            val img = cur_data.live_data_cocktails.value?.get(position)?._img
-            if (img != null) {
-                Glide.with(binding.root)
-                    .load(img)
-                    .into(imageView)
-                cocktail._img = img
-            } else {
-                Glide.with(binding.root)
-                    .load(R.drawable.place_holder)
-                    .into(imageView)
+                //onBackPressed()
             }
         }
-        else{
+        /*else{
             idSaveBtn.setOnClickListener {
                 generateCocktailList()
                 onBackPressed()
             }
-            val imageView = binding.idNewItemImg
-            val imageUri: Uri? = intent.getParcelableExtra<Uri>("image")
-            if (imageUri != null) {
-                Glide.with(binding.root)
-                    .load(imageUri)
-                    .into(imageView)
-            } else {
-                Glide.with(binding.root)
-                    .load(R.drawable.place_holder)
-                    .into(imageView)
-            }
+        }*/
 
+        imageUri = intent.getParcelableExtra<Uri>("image")
+        if (imageUri != null) {
+            Glide.with(binding.root)
+                .load(imageUri)
+                .into(imageView)
+            cocktail._img = imageUri
         }
+        else {
+        Glide.with(binding.root)
+            .load(R.drawable.place_holder)
+            .into(imageView)
+        }
+
 
         idNewItemImg.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
@@ -185,14 +178,17 @@ class save_cocktail_view : AppCompatActivity() {
         }
         cur_data.live_data_cocktails.value = new_list
 
-        /*val intent = Intent(applicationContext, MainActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+        val intent = Intent(this@save_cocktail_view, cocktail_view_activity::class.java)
+        intent.putExtra("title", title)
+        intent.putExtra("description", description)
+        intent.putExtra("recipe", recipe)
+        if(cocktail._img != null)
+            intent.putExtra("image", cocktail._img)
+
+        intent.putExtra("position", position)
+
         startActivity(intent)
-        finish()*/
-        /*
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.id_page, HomePageFragment.newInstance())
-            .commit()*/
     }
+
+
 }

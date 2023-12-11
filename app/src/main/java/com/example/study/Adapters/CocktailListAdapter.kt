@@ -36,7 +36,7 @@ class CocktailListAdapter(var context: Context, private val cocktailList: List<C
         }
         else{
             Glide.with(holder.itemView.context)
-                .load(R.drawable.place_holder_img)
+                .load(R.drawable.place_holder)
                 .into(holder.imageView)
         }
 

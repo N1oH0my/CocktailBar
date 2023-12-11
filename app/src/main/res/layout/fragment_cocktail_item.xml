@@ -6,30 +6,47 @@
     android:layout_height="wrap_content"
     tools:context=".CocktailItem">
 
-    <!-- 图片 -->
-    <ImageView
-        android:id="@+id/id_recycler_item_img"
+
+    <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/app_name"
-        android:src="@drawable/place_holder_img"
+        app:cardCornerRadius="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- 文本 -->
-    <TextView
-        android:id="@+id/id_recycler_item_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text="TextView"
-        android:textColor="#ffffff"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@id/id_recycler_item_img"
-        app:layout_constraintEnd_toEndOf="@id/id_recycler_item_img"
-        app:layout_constraintStart_toStartOf="@id/id_recycler_item_img"
-        app:layout_constraintTop_toTopOf="@id/id_recycler_item_img" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+
+        <ImageView
+            android:id="@+id/id_recycler_item_img"
+            android:layout_width="190dp"
+            android:layout_height="200dp"
+            android:contentDescription="@string/app_name"
+
+            android:src="@drawable/place_holder_img"
+
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/id_recycler_item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="100dp"
+            android:gravity="center|start"
+            android:padding="8dp"
+            android:text="TextView"
+            android:textColor="#ffffff"
+            android:textSize="24sp" />
+
+    </androidx.cardview.widget.CardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
