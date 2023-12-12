@@ -14,6 +14,7 @@ import com.example.study.MainActivity
 import com.example.study.Models.Cocktail
 import com.example.study.R
 import com.example.study.View.Fragments.HomePageFragment
+import com.example.study.ViewModel.DatabaseHelper
 import com.example.study.databinding.ActivitySaveCocktailViewBinding
 import com.example.weatherapp.ViewModels.MainViewModel
 
@@ -23,7 +24,7 @@ class save_cocktail_view : AppCompatActivity() {
         ViewModelProvider(this)[MainViewModel::class.java]
     }
     private var PICK_IMAGE_REQUEST = 1
-    private var cocktail = Cocktail(" ", " ", " ", null)
+    private var cocktail = Cocktail(null," ", " ", " ", null)
     var position: Int = -1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -128,6 +129,9 @@ class save_cocktail_view : AppCompatActivity() {
 
 
         val new_cocktail_list = mutableListOf<Cocktail>()
+        val dbHelper = DatabaseHelper(this@save_cocktail_view)
+        val id = dbHelper.addCocktail(cocktail)
+        cocktail._id = id
         new_cocktail_list.add(cocktail)
 
         val cur_list = cur_data.live_data_cocktails.value
@@ -174,9 +178,13 @@ class save_cocktail_view : AppCompatActivity() {
         val new_list = cur_data.live_data_cocktails.value
         if (new_list != null && new_list.size != 0)
         {
+            cocktail._id = new_list[position]._id
             new_list[position] = cocktail
+            val dbHelper = DatabaseHelper(this@save_cocktail_view)
+            dbHelper.updateCocktail(cocktail)
         }
         cur_data.live_data_cocktails.value = new_list
+
 
         val intent = Intent(this@save_cocktail_view, cocktail_view_activity::class.java)
         intent.putExtra("title", title)

@@ -1,6 +1,5 @@
 package com.example.study.View.Fragments
 
-import SavedData
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment

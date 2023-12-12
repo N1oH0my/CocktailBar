@@ -1,6 +1,5 @@
 package com.example.study.View.Fragments
 
-import SavedData
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,6 +11,7 @@ import com.example.study.databinding.FragmentHomePageBinding
 import com.example.study.View.save_cocktail_view
 import com.example.weatherapp.ViewModels.MainViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.study.ViewModel.DatabaseHelper
 
 
 class HomePageFragment : Fragment() {
@@ -31,10 +31,14 @@ class HomePageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?): Unit =with(_binding) {
         super.onViewCreated(view, savedInstanceState)
 
-
-        Init()
-        Launch()
+        val dbHelper = DatabaseHelper(requireContext())
+        val list = dbHelper.getAllCocktails()
+        cur_data.live_data_cocktails.value = list
         Update()
+        Launch()
+        Init()
+
+
 
     }
     companion object {
@@ -54,6 +58,7 @@ class HomePageFragment : Fragment() {
             val intent = Intent(requireContext(), save_cocktail_view::class.java)
             startActivity(intent)
         }
+
     }
 
     private fun Launch()
