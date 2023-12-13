@@ -38,10 +38,10 @@ class CocktailsListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val adapter = CocktailListAdapter(requireContext(), getDummyProductList())
-        // Инициализация RecyclerView и установка адаптера
+
         val recyclerView = view.findViewById<RecyclerView>(R.id.id_cocktail_recycler)
         recyclerView.layoutManager = GridLayoutManager(context, 2) // Отображение по 2 элемента в линии
-        recyclerView.adapter = adapter//CocktailListAdapter(requireContext(), getDummyProductList())
+        recyclerView.adapter = adapter
 
 
         adapter.onItemClickListener = object : CocktailListAdapter.OnItemClickListener {
@@ -60,10 +60,8 @@ class CocktailsListFragment : Fragment() {
 
     }
 
-    // Метод для получения списка товаров
     private fun getDummyProductList(): List<Cocktail> {
-        // Здесь вы можете получить список товаров из вашего источника данных
-        // В данном примере мы создаем фиктивный список товаров
+
         val cur_cocktail_list = cur_data.live_data_cocktails.value//mutableListOf<Cocktail>()
         var cocktail_list = mutableListOf<Cocktail>()
         if (cur_cocktail_list != null)
@@ -71,11 +69,6 @@ class CocktailsListFragment : Fragment() {
             cocktail_list.addAll(cur_cocktail_list)
         }
         return cocktail_list
-        /*
-        productList.add(Cocktail("first", "Description ", "Recipe", null))
-        productList.add(Cocktail("second", "Description ", "Recipe", null))
-        productList.add(Cocktail("third", "Description ", "Recipe", null))
-        */
 
     }
 }

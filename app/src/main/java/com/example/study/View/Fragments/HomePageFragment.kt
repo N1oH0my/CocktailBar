@@ -1,10 +1,15 @@
 package com.example.study.View.Fragments
 
 import android.content.Intent
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.os.Environment
+import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.study.R
 import com.example.study.databinding.FragmentHomePageBinding
@@ -19,6 +24,7 @@ class HomePageFragment : Fragment() {
     private val cur_data: MainViewModel by lazy {
         ViewModelProvider(this)[MainViewModel::class.java]
     }
+    private val REQUEST_CODE_PERMISSION = 1001
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,9 +40,10 @@ class HomePageFragment : Fragment() {
         val dbHelper = DatabaseHelper(requireContext())
         val list = dbHelper.getAllCocktails()
         cur_data.live_data_cocktails.value = list
+        Init()
         Update()
         Launch()
-        Init()
+
 
 
 
@@ -60,16 +67,31 @@ class HomePageFragment : Fragment() {
         }
 
     }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE_PERMISSION) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R &&
+                Environment.isExternalStorageManager()) {
 
+            } else {
+
+                Toast.makeText(requireContext(), "no permissions for files", Toast.LENGTH_LONG).show()
+            }
+        }
+    }
     private fun Launch()
     {
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R &&
+            !Environment.isExternalStorageManager()) {
+            val uri = Uri.parse("package:" + requireActivity().packageName)
+            val intent = Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION, uri)
+            startActivityForResult(intent, REQUEST_CODE_PERMISSION)
+        }
         val list = cur_data.live_data_cocktails.value
         if (list != null && list.size != 0)
         {
             val rootView = view?.findViewById<ViewGroup>(R.id.id_scroll_view)
 
-            // Удаление всех дочерних элементов из корневого представления
             if (rootView != null) {
                 rootView.removeAllViews()
             }
@@ -87,4 +109,5 @@ class HomePageFragment : Fragment() {
             Launch()
         }
     }
+
 }

@@ -1,19 +1,14 @@
 package com.example.study.View
 
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.AttributeSet
-import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.example.study.MainActivity
 import com.example.study.Models.Cocktail
 import com.example.study.R
-import com.example.study.View.Fragments.HomePageFragment
 import com.example.study.ViewModel.DatabaseHelper
 import com.example.study.databinding.ActivitySaveCocktailViewBinding
 import com.example.weatherapp.ViewModels.MainViewModel
@@ -67,15 +62,9 @@ class save_cocktail_view : AppCompatActivity() {
         {
             idSaveBtn.setOnClickListener {
                 updateCocktailList()
-                //onBackPressed()
             }
         }
-        /*else{
-            idSaveBtn.setOnClickListener {
-                generateCocktailList()
-                onBackPressed()
-            }
-        }*/
+
 
         imageUri = intent.getParcelableExtra<Uri>("image")
         if (imageUri != null) {
@@ -141,15 +130,7 @@ class save_cocktail_view : AppCompatActivity() {
         }
         cur_data.live_data_cocktails.value = new_cocktail_list
 
-        /*val intent = Intent(applicationContext, MainActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-        startActivity(intent)
-        finish()*/
-        /*
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.id_page, HomePageFragment.newInstance())
-            .commit()*/
+
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -196,6 +177,7 @@ class save_cocktail_view : AppCompatActivity() {
         intent.putExtra("position", position)
 
         startActivity(intent)
+        finish()
     }
 
 

@@ -6,9 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.example.study.MainActivity
 import com.example.study.R
-import com.example.study.View.Fragments.CocktailsListFragment
 import com.example.study.databinding.ActivityCocktailViewBinding
 import com.example.weatherapp.ViewModels.MainViewModel
 
@@ -27,13 +25,12 @@ class cocktail_view_activity : AppCompatActivity() {
 
         Init()
     }
-    /*override fun onResume() {
-
+    override fun onResume() {
         super.onResume()
         binding = ActivityCocktailViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
         Init()
-    }*/
+    }
     private fun Init() = with(binding) {
         val title = intent.getStringExtra("title")
         val description = intent.getStringExtra("description")
@@ -73,12 +70,11 @@ class cocktail_view_activity : AppCompatActivity() {
             intent.putExtra("position", position)
 
             startActivity(intent)
+            finish()
         }
     }
     override fun onBackPressed() {
-        val intent = Intent(this@cocktail_view_activity, MainActivity::class.java)
-        startActivity(intent)
-
+        finish()
     }
 
 

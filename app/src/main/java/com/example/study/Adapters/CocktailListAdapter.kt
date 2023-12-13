@@ -51,7 +51,7 @@ class CocktailListAdapter(var context: Context, private val cocktailList: List<C
         val titleTextView: TextView = itemView.findViewById(R.id.id_recycler_item_title)
         val imageView: ImageView = itemView.findViewById(R.id.id_recycler_item_img)
         fun bind(item: Cocktail, clickListener: OnItemClickListener, position: Int) {
-            // Привязка данных к элементу списка
+
             itemView.setOnClickListener { clickListener.onItemClick(item, position) }
         }
     }
