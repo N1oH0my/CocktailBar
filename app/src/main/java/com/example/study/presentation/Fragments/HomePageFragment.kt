@@ -1,4 +1,4 @@
-package com.example.study.View.Fragments
+package com.example.study.presentation.Fragments
 
 import android.content.Intent
 import android.net.Uri
@@ -13,10 +13,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.study.R
 import com.example.study.databinding.FragmentHomePageBinding
-import com.example.study.View.save_cocktail_view
+import com.example.study.presentation.View.save_cocktail_view
 import com.example.weatherapp.ViewModels.MainViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.study.ViewModel.DatabaseHelper
+import com.example.study.framework.database.DatabaseHelper
 
 
 class HomePageFragment : Fragment() {

@@ -1,4 +1,4 @@
-package com.example.study.View
+package com.example.study.presentation.View
 
 import android.content.Intent
 import android.net.Uri
@@ -6,8 +6,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.example.study.MainActivity
 import com.example.study.R
 import com.example.study.databinding.ActivityCocktailViewBinding
+import com.example.study.framework.database.DatabaseHelper
 import com.example.weatherapp.ViewModels.MainViewModel
 
 
@@ -32,6 +34,7 @@ class cocktail_view_activity : AppCompatActivity() {
         Init()
     }
     private fun Init() = with(binding) {
+        val id = intent.getStringExtra("id")
         val title = intent.getStringExtra("title")
         val description = intent.getStringExtra("description")
         val recipe = intent.getStringExtra("recipe")
@@ -72,11 +75,26 @@ class cocktail_view_activity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+        idDeleteButton.setOnClickListener {
+            val intent = Intent(this@cocktail_view_activity, MainActivity::class.java)
+            val dbHelper = DatabaseHelper(this@cocktail_view_activity)
+            val cocktailList = cur_data.live_data_cocktails.value
+            if (cocktailList != null &&
+                position >= 0 &&
+                position < cocktailList.size &&
+                id != null)
+            {
+                cocktailList.removeAt(position)
+                cur_data.live_data_cocktails.value = cocktailList
+
+                dbHelper.deleteCocktail(id.toInt())
+            }
+            startActivity(intent)
+            finish()
+        }
     }
     override fun onBackPressed() {
         finish()
     }
-
-
 
 }

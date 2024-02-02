@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.save_cocktail_view"
+    tools:context=".presentation.View.save_cocktail_view"
     android:id="@+id/id_page"
     >
 
@@ -48,9 +48,9 @@
                     android:layout_width="204dp"
                     android:layout_height="216dp"
                     android:contentDescription="@string/app_name"
-                    android:src="@drawable/place_holder_img"
-
                     android:scaleType="fitXY"
+
+                    android:src="@drawable/place_holder_img"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -85,7 +85,8 @@
                 android:fontFamily="@font/didact_gothic"
                 android:gravity="center"
                 android:text="add description"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                />
 
             <EditText
                 android:id="@+id/id_edit_description"
@@ -93,8 +94,8 @@
                 android:layout_height="154dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:inputType="text"
                 android:hint="Enter description:"
+                android:inputType="textMultiLine"
                 />
 
             <TextView
@@ -105,7 +106,9 @@
                 android:fontFamily="@font/didact_gothic"
                 android:gravity="center"
                 android:text="add recipe"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+
+                />
 
             <EditText
                 android:id="@+id/id_edit_recipe"
@@ -113,8 +116,8 @@
                 android:layout_height="154dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:inputType="text"
                 android:hint="Enter recipe:"
+                android:inputType="textMultiLine"
                 />
 
 

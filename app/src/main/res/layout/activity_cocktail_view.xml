@@ -2,23 +2,22 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/id_delete_btn"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.cocktail_view_activity">
+    tools:context=".presentation.View.cocktail_view_activity">
 
 
     <LinearLayout
         android:id="@+id/id_linear_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="100dp"
         android:background="#F9F9F9"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="parent">
 
 
         <androidx.cardview.widget.CardView
@@ -28,7 +27,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
 
-            app:cardCornerRadius="60dp"
+            app:cardCornerRadius="80dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -69,7 +68,9 @@
             android:fontFamily="@font/didact_gothic"
             android:gravity="center"
             android:text="To make this homemade pink lemonade, simply combine all the ingredients in a pitcher."
-            android:textSize="19sp" />
+            android:textSize="19sp"
+            android:inputType="textMultiLine"
+            />
 
         <TextView
             android:id="@+id/id_recipe_text"
@@ -80,7 +81,9 @@
             android:fontFamily="@font/didact_gothic"
             android:gravity="center"
             android:text="To make this homemade pink \nlemonade, simply combine \nall the ingredients in a pitcher."
-            android:textSize="19sp" />
+            android:textSize="19sp"
+            android:inputType="textMultiLine"
+            />
 
 
     </LinearLayout>
@@ -94,23 +97,27 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/id_scroll_view">
+        app:layout_constraintStart_toStartOf="parent">
 
-        <!-- Ваш код для предыдущего RelativeLayout -->
+        <Button
+            android:id="@+id/id_delete_button"
+            android:layout_width="329dp"
+            android:layout_height="62dp"
+            android:layout_marginBottom="15dp"
 
-        <RelativeLayout
+            android:backgroundTint="#C48C0F0F"
+            android:fontFamily="@font/didact_gothic"
+            android:text="Delete"
+            android:textColor="#FFFFFF"
+            android:textSize="24dp"
+            app:cornerRadius="23dp" />
+
+        <ImageView
+            android:id="@+id/id_edit_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center">
+            app:srcCompat="@drawable/edit_frame_btn" />
 
-            <ImageView
-                android:id="@+id/id_edit_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/edit_frame_btn" />
-
-        </RelativeLayout>
 
     </LinearLayout>
 

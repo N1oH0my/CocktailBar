@@ -1,4 +1,4 @@
-package com.example.study.Models
+package com.example.study.core.entities.CocktailModels
 
 import android.net.Uri
 

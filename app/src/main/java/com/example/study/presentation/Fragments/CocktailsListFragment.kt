@@ -1,4 +1,4 @@
-package com.example.study.View.Fragments
+package com.example.study.presentation.Fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,10 +9,10 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.study.Adapters.CocktailListAdapter
-import com.example.study.Models.Cocktail
+import com.example.study.presentation.Adapters.CocktailListAdapter
+import com.example.study.core.entities.CocktailModels.Cocktail
 import com.example.study.R
-import com.example.study.View.cocktail_view_activity
+import com.example.study.presentation.View.cocktail_view_activity
 import com.example.study.databinding.FragmentCocktailsListBinding
 import com.example.weatherapp.ViewModels.MainViewModel
 
@@ -48,6 +48,7 @@ class CocktailsListFragment : Fragment() {
             override fun onItemClick(item: Cocktail, position: Int) {
                 // Здесь открывайте новую активность (или фрагмент) с информацией о выбранном элементе
                 val intent = Intent(requireContext(), cocktail_view_activity::class.java)
+                intent.putExtra("id", item._id.toString())
                 intent.putExtra("title", item._title)
                 intent.putExtra("description", item._description)
                 intent.putExtra("recipe", item._recipe)

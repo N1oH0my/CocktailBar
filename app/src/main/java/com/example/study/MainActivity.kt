@@ -2,7 +2,7 @@ package com.example.study
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.study.View.Fragments.HomePageFragment
+import com.example.study.presentation.Fragments.HomePageFragment
 
 
 class MainActivity : AppCompatActivity() {

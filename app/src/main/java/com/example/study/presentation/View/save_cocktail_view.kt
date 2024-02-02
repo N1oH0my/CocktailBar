@@ -1,4 +1,4 @@
-package com.example.study.View
+package com.example.study.presentation.View
 
 import android.content.Intent
 import android.net.Uri
@@ -7,9 +7,9 @@ import android.os.Bundle
 import android.provider.MediaStore
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.example.study.Models.Cocktail
+import com.example.study.core.entities.CocktailModels.Cocktail
 import com.example.study.R
-import com.example.study.ViewModel.DatabaseHelper
+import com.example.study.framework.database.DatabaseHelper
 import com.example.study.databinding.ActivitySaveCocktailViewBinding
 import com.example.weatherapp.ViewModels.MainViewModel
 

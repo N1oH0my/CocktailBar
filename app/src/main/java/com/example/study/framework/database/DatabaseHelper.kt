@@ -1,4 +1,4 @@
-package com.example.study.ViewModel
+package com.example.study.framework.database
 
 import android.content.ContentValues
 import android.content.Context
@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.net.Uri
 import androidx.core.database.getIntOrNull
-import com.example.study.Models.Cocktail
+import com.example.study.core.entities.CocktailModels.Cocktail
 
 // SQLite
 class DatabaseHelper(context: Context) :
@@ -103,6 +103,14 @@ class DatabaseHelper(context: Context) :
         val selection = "$COLUMN_ID = ?" // Изменено условие поиска на основе ID
         val selectionArgs = arrayOf(cocktail._id.toString()) // Используется ID для поиска
         db.update(TABLE_NAME, values, selection, selectionArgs)
+        db.close()
+    }
+
+    fun deleteCocktail(cocktailId: Int) {
+        val db = writableDatabase
+        val selection = "$COLUMN_ID = ?"
+        val selectionArgs = arrayOf(cocktailId.toString())
+        db.delete(TABLE_NAME, selection, selectionArgs)
         db.close()
     }
 

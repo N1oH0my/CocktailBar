@@ -1,4 +1,4 @@
-package com.example.study.Adapters
+package com.example.study.presentation.Adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.study.Models.Cocktail
+import com.example.study.core.entities.CocktailModels.Cocktail
 import com.example.study.R
 
 class CocktailListAdapter(var context: Context, private val cocktailList: List<Cocktail>) : RecyclerView.Adapter<CocktailListAdapter.CocktailViewHolder>() {

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/id_home_page"
-    tools:context=".View.Fragments.HomePageFragment"
+    tools:context=".presentation.Fragments.HomePageFragment"
 
     >
 
@@ -14,10 +14,14 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_gravity="bottom|center"
+        android:background="#00FFFFFF"
         android:foregroundGravity="bottom|center"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingConstraints">
@@ -38,9 +42,8 @@
                 android:layout_marginTop="33dp"
                 android:layout_marginEnd="39dp"
                 android:layout_marginBottom="15dp"
-                android:src="@drawable/start_img"
                 android:contentDescription="@string/app_name"
-                />
+                android:src="@drawable/start_img" />
 
             <TextView
                 android:id="@+id/textView"
@@ -66,9 +69,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                android:src="@drawable/arrow_icon"
                 android:contentDescription="@string/app_name"
-                />
+                android:src="@drawable/arrow_icon" />
 
 
         </LinearLayout>
@@ -79,29 +81,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:layout_marginBottom="21dp"
+        android:layout_marginBottom="25dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/id_scroll_view">
+        app:layout_constraintStart_toStartOf="parent">
 
-        <!-- Ваш код для предыдущего RelativeLayout -->
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
-
-            <ImageButton
-                android:id="@+id/id_add_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:src="@drawable/add_btn"
-                android:contentDescription="@string/app_name"
-                />
-        </RelativeLayout>
+        <Button
+            android:id="@+id/id_add_btn"
+            android:layout_width="75dp"
+            android:layout_height="80dp"
+            android:backgroundTint="#4B97FF"
+            android:contentDescription="@string/app_name"
+            android:fontFamily="@font/didact_gothic"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="+"
+            android:textAlignment="gravity"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            app:cornerRadius="150dp" />
 
     </LinearLayout>
 
