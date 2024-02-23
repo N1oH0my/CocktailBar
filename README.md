@@ -7,6 +7,8 @@
 
 <h1>CocktailBar</h1>
 
+<p> https://www.figma.com/file/UCmGNNZj7950sB6sD9BaCG/Android-Test---Cocktail-Bar?type=design&node-id=0-1&mode=design </p>
+
 <p>В проекте использовались следующие библиотеки:</p>
 
 <ul>
@@ -36,18 +38,14 @@
 <p>Для сохранения данных была попытка написать класс с SharedPreferences, но не удалось, пыталась сохранить MutableList, а ещё в виде JSON, но приложение всегда зависало при сохранении.</p>
 
 <p>Также была попытка исправить RecyclerView, чтобы не было таких отступов, но не было найдено решения для этой ситуации.</p>
-<img src="https://github.com/N1oH0my/CocktailBar/blob/master/img/Screenshot_2023-08-08-22-29-37-671_com.example.study.jpg" alt="Alt текст">
-<img src="https://github.com/N1oH0my/CocktailBar/blob/master/img/Screenshot_2023-08-08-22-29-45-946_com.example.study.jpg" alt="Alt текст">
-<img src="https://github.com/N1oH0my/CocktailBar/blob/master/img/Screenshot_2023-08-08-22-29-48-189_com.example.study.jpg" alt="Alt текст">
-<img src="https://github.com/N1oH0my/CocktailBar/blob/master/img/Screenshot_2023-08-08-22-33-41-338_com.example.study.jpg" alt="Alt текст">
-<img src="https://github.com/N1oH0my/CocktailBar/blob/master/img/Screenshot_2023-08-08-22-33-44-995_com.example.study.jpg" alt="Alt текст">
-<img src="https://github.com/N1oH0my/CocktailBar/blob/master/img/Screenshot_2023-08-08-22-33-49-785_com.example.study.jpg" alt="Alt текст">
-<img src="https://github.com/N1oH0my/CocktailBar/blob/master/img/Screenshot_2023-08-08-22-33-52-737_com.example.study.jpg" alt="Alt текст">
-<img src="https://github.com/N1oH0my/CocktailBar/blob/master/img/Screenshot_2023-08-08-22-33-54-820_com.example.study.jpg" alt="Alt текст">
-<img src="https://github.com/N1oH0my/CocktailBar/blob/master/img/Screenshot_2023-08-08-22-34-18-075_com.example.study.jpg" alt="Alt текст">
-<img src="https://github.com/N1oH0my/CocktailBar/blob/master/img/Screenshot_2023-08-08-22-34-20-407_com.example.study.jpg" alt="Alt текст">
-<img src="https://github.com/N1oH0my/CocktailBar/blob/master/img/Screenshot_2023-08-08-22-34-41-084_com.example.study.jpg" alt="Alt текст">
-<img src="https://github.com/N1oH0my/CocktailBar/blob/master/img/Screenshot_2023-08-08-22-34-43-539_com.example.study.jpg" alt="Alt текст">
+<img src="https://github.com/N1oH0my/CocktailBar/blob/master/img/1.jpg" alt="Alt текст">
+<img src="https://github.com/N1oH0my/CocktailBar/blob/master/img/2.jpg" alt="Alt текст">
+<img src="https://github.com/N1oH0my/CocktailBar/blob/master/img/3.jpg" alt="Alt текст">
+<img src="https://github.com/N1oH0my/CocktailBar/blob/master/img/4.jpg" alt="Alt текст">
+<img src="https://github.com/N1oH0my/CocktailBar/blob/master/img/5.jpg" alt="Alt текст">
+<img src="https://github.com/N1oH0my/CocktailBar/blob/master/img/6.jpg" alt="Alt текст">
+<img src="https://github.com/N1oH0my/CocktailBar/blob/master/img/7.jpg" alt="Alt текст">
+<img src="https://github.com/N1oH0my/CocktailBar/blob/master/img/8.jpg" alt="Alt текст">
 </body>
 </html>
 
